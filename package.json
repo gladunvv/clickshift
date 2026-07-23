@@ -1,0 +1,35 @@
+{
+  "name": "clickshift",
+  "version": "0.1.0",
+  "description": "Schema migration CLI for ClickHouse — versioned SQL migrations with cluster-aware DDL and explicit, honest rollbacks.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "clickshift": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "ch:up": "docker compose -f test/docker-compose.yml up -d --wait",
+    "ch:down": "docker compose -f test/docker-compose.yml down -v"
+  },
+  "dependencies": {
+    "@clickhouse/client": "^1.10.1",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
